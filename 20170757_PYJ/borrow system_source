@@ -1,0 +1,69 @@
+#include "borrow.h"
+#include <iostream>
+
+  borrow_system::borrow_system() 
+  {
+	cout << "구명조끼를 대여하고 싶으면 1번, 튜브를 대여하고 싶으면 2번을 눌러주세요." << endl;
+	cin >> selection;
+	//구명조끼는 1번, 튜브는 2번으로 받아 selection에 넣음.
+
+	if (selection == 1) //구명조끼를 선택
+	{
+		cout << "키(cm)를 입력해주세요 : " << endl; //사용자의 키 height로 입력받기
+		cin >> height;
+
+		if (height <= 140) //키 140cm이하면 구명조끼 소형
+		{
+			cout << "구명조끼 소형을 대여하셨습니다." << endl; 
+			vest_price = 3000; //1시간에 3000원
+		
+		}
+		else if(140<height<165)//키 140초과, 165미만이면 구명조끼 중형
+		{
+			cout << "구명조끼 중형을 대여하셨습니다." << endl;
+			vest_price = 4000; //1시간에 4000원
+		}
+		else if (height >=165)//키 165cm이상이면 구명조끼 소형
+		{
+			cout << "구명조끼 대형을 대여하셨습니다." << endl;
+			vest_price = 5000; //1시간에 5000원
+		}
+
+		cout << "대여하실 시간(분)을 입력해주세요." << endl; //빌릴 시간 입력받음(분)
+		cin >> borrow_time;
+
+		vest_price = vest_price * borrow_time / 60; // 대여 비용 = 1시간 조끼 가격* 시간 
+		cout << "구명조끼의"<< borrow_time <<"분 대여료는"<< vest_price<<"입니다." << endl; 
+		//가격 출력
+	}
+
+	else if (selection == 2) //튜브를 선택
+	{
+		cout << "몸무게(kg)를 입력해주세요 : " << endl;//사용자의 몸무게 weight로 입력받기
+		cin >> weight;
+
+		if (weight <= 50) //몸무게 50kg이하면 튜브 소형
+		{
+			cout << "튜브 소형을 대여하셨습니다." << endl;
+			tube_price = 3000;//1시간에 3000원
+
+		}
+		else if (50 < weight < 70)//몸무게 50kg초과, 70kg미만이면 튜브 중형
+		{
+			cout << "튜브 중형을 대여하셨습니다." << endl;
+			tube_price = 4000;//1시간에 4000원
+		}
+		else if (weight >= 70)//몸무게 70kg이상이면 튜브 대형
+		{
+			cout << "튜브 대형을 대여하셨습니다." << endl;
+			tube_price = 5000;//1시간에 5000원
+		}
+
+		cout << "대여하실 시간(분)을 입력해주세요." << endl; //빌릴 시간 입력받음(분)
+		cin >> borrow_time;
+
+		tube_price = tube_price * borrow_time / 60;
+		cout << "튜브" << borrow_time << "분 대여료는" << tube_price << "입니다." << endl;
+		//가격 출력
+	}
+}
